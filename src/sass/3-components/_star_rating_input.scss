@@ -1,0 +1,14 @@
+.star-rating {
+  display: flex;
+}
+
+.star-rating__input {
+  input[type="radio"] {
+    display: none;
+
+    + .star-icon {
+      cursor: pointer;
+      transition: color 200ms;
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import React from 'react';
+import CustomerReview from './components/CustomerReview/CustomerReview';
 
 function App() {
   return (
-    <>
-      <h1>Payment Feedback</h1>
-    </>
+    <main className='content'>
+      <CustomerReview />
+    </main>
   );
 }
 

@@ -1,0 +1,19 @@
+.comment-card {
+  background-color: #eff6ff;
+  border: 2px solid #eff6ff;
+  border-radius: 12px;
+  color: #426696;
+  min-width: 300px;
+  padding: 12px;
+  width: 100%;
+}
+
+.comment-card__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-card__text {
+  margin-top: 12px;
+}

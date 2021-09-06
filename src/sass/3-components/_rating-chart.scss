@@ -1,0 +1,7 @@
+.rating-chart {
+  @include large-screens-up {
+    min-width: 350px;
+    max-height: 200px;
+    max-width: 400px;
+  }
+}

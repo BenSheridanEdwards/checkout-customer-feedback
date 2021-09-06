@@ -1,0 +1,37 @@
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .feedback-form__label {
+    color: #426696;
+    font-weight: bold;
+    margin-top: 8px;
+
+    + .star-rating {
+      margin-top: 4px;
+    }
+  }
+
+  .feedback-form__input {
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    box-shadow: 0 4px 5px -5px rgba(0, 0, 0, 0.1),
+      0 4px 4px -5px rgba(0, 0, 0, 0.04);
+
+    padding: 8px 12px;
+    margin-top: 4px;
+  }
+
+  .feedback-form__button {
+    background-color: #1d4ed8;
+    border: 1px solid #1d4ed8;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    height: 32px;
+    margin-top: 8px;
+    width: 120px;
+  }
+}
