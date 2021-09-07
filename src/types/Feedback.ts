@@ -1,4 +1,4 @@
-export default interface Comment {
+export default interface Feedback {
   comment: string;
   date: string;
   email: string;

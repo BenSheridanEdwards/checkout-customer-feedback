@@ -1,19 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
-import Comment from '../../types/Comment';
 
 interface Props {
-  feedbackList: Array<Comment>;
+  ratingList: Array<any>;
 }
 
-const RatingChart = (props: Props) => {
-  const { feedbackList } = props;
+const AverageRatingChart = (props: Props) => {
+  const { ratingList } = props;
 
-  const calcAvgRating = (feedbackList: Array<Comment>) => {
-    const ratingList = feedbackList.map((feedback) => {
-      return feedback.rating;
-    });
-
+  const calcAvgRating = (ratingList: Array<number>) => {
     const avgRatingList = [];
 
     for (let i = 0; i < ratingList.length; i++) {
@@ -28,12 +23,16 @@ const RatingChart = (props: Props) => {
     return avgRatingList;
   };
 
+  const memoizedAvgRatingList = useMemo(() => {
+    return calcAvgRating(ratingList);
+  }, [ratingList]);
+
   const chartData = {
-    labels: Array.from({ length: feedbackList.length }, (_, i) => i + 1),
+    labels: Array.from({ length: ratingList.length }, (_, i) => i + 1),
     datasets: [
       {
-        label: 'Avg Customer Review',
-        data: calcAvgRating(feedbackList),
+        label: 'Average Customer Rating',
+        data: memoizedAvgRatingList,
         fill: false,
         borderColor: '#426696',
         tension: 0.25,
@@ -44,4 +43,4 @@ const RatingChart = (props: Props) => {
   return <Line data={chartData} className='rating-chart' />;
 };
 
-export default RatingChart;
+export default AverageRatingChart;

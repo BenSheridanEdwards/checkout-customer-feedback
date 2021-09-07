@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Star from '../Star/Star';
 
 interface Props {
   currentRating: number;
   isInput: boolean;
+  handleInputChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const StarRating = (props: Props) => {
-  const { currentRating, isInput } = props;
+  const { currentRating, isInput, handleInputChange } = props;
+
+  const [hoverValue, setHoverValue] = useState<null | number>(null);
+
+  const handleHover = (value: number) => {
+    if (isInput) setHoverValue(value);
+  };
 
   return (
     <div className='star-rating'>
-      <Star value='1' currentRating={currentRating} isInput={isInput} />
-      <Star value='2' currentRating={currentRating} isInput={isInput} />
-      <Star value='3' currentRating={currentRating} isInput={isInput} />
-      <Star value='4' currentRating={currentRating} isInput={isInput} />
-      <Star value='5' currentRating={currentRating} isInput={isInput} />
+      {[...Array(5)].map((star, i) => {
+        const starValue = i + 1;
+        return (
+          <Star
+            key={starValue}
+            value={`${starValue}`}
+            currentRating={currentRating}
+            isInput={isInput}
+            handleInputChange={handleInputChange}
+            handleHover={handleHover}
+            hoverValue={hoverValue}
+          />
+        );
+      })}
     </div>
   );
 };

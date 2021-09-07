@@ -1,16 +1,8 @@
 .comment-list {
+  align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   padding: 0;
   width: 100%;
-}
-
-.comment-list__item {
-  margin-top: 12px;
-  width: 100%;
-
-  &:first-child {
-    margin-top: 0;
-  }
 }

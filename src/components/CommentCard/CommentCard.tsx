@@ -1,9 +1,9 @@
 import React from 'react';
 import StarRating from '../StarRating/StarRating';
-import Comment from '../../types/Comment';
+import Feedback from '../../types/Feedback';
 
 interface Props {
-  feedbackItem: Comment;
+  feedbackItem: Feedback;
 }
 
 const CommentCard = (props: Props) => {
