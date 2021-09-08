@@ -7,7 +7,7 @@ import Feedback from '../../types/Feedback';
 import FormStatus from '../../types/FormStatus';
 import FlashMessage from '../FlashMessage/FlashMessage';
 
-const CustomerReview = () => {
+const ProductReview = () => {
   const [feedbackList, setFeedbackList] = useState<Array<Feedback>>([]);
   const [ratingList, setRatingList] = useState<Array<number>>([]);
   const [formStatus, setFormStatus] = useState<FormStatus>({
@@ -79,4 +79,4 @@ const CustomerReview = () => {
   );
 };
 
-export default CustomerReview;
+export default ProductReview;

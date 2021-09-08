@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
-import CustomerReview from './CustomerReview';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { render, waitFor } from '@testing-library/react';
+import ProductReview from './ProductReview';
 
-describe('CustomerReview component', () => {
+describe('ProductReview component', () => {
   const axiosMock = new MockAdapter(axios);
 
   axiosMock.onGet('http://localhost:3002/feedback').reply(200, {
@@ -20,7 +20,7 @@ describe('CustomerReview component', () => {
   });
 
   const createWrapper = (extraProps: any = {}) => {
-    return render(<CustomerReview {...extraProps} />);
+    return render(<ProductReview {...extraProps} />);
   };
 
   it('should render the header', async () => {

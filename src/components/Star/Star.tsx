@@ -28,6 +28,7 @@ const Star = (props: Props) => {
           name='rating'
           value={value}
           onChange={handleInputChange}
+          data-testid={`star-${value}`}
         />
       )}
       <FaStar
