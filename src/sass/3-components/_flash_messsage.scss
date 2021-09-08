@@ -1,0 +1,15 @@
+.flash-message {
+  background-color: #d1d5db;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 12px;
+  width: 100%;
+
+  &.success {
+    background-color: #6ee7b7;
+  }
+
+  &.failure {
+    background-color: #fca5a5;
+  }
+}

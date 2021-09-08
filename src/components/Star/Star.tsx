@@ -39,6 +39,7 @@ const Star = (props: Props) => {
         }
         onMouseEnter={() => handleHover(value)}
         onMouseLeave={() => handleHover(null)}
+        aria-label={`Rate product ${value} out of 5 stars`}
       />
     </label>
   );

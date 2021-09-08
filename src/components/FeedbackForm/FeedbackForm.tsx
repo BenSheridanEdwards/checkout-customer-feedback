@@ -5,7 +5,13 @@ import uuid from 'react-uuid';
 import StarRating from '../StarRating/StarRating';
 import addFeedbackItem from '../../api/addFeedbackItem';
 
-const FeedbackForm = () => {
+interface Props {
+  handleFlashMessage: Function;
+  fetchFeedbackList: Function;
+}
+
+const FeedbackForm = (props: Props) => {
+  const { handleFlashMessage, fetchFeedbackList } = props;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,64 +41,86 @@ const FeedbackForm = () => {
     }
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const feedbackObject = {
       id: uuid(),
       date: new Date().toLocaleString(),
       ...formData,
     };
 
-    addFeedbackItem(feedbackObject);
+    addFeedbackItem(feedbackObject)
+      .then((response) => {
+        handleFlashMessage({
+          status: 'success',
+          message: 'Form successfully submitted',
+        });
+        fetchFeedbackList();
+        setFormData({ name: '', email: '', comment: '', rating: 0 });
+      })
+      .catch((error) => {
+        console.log(error);
+        setFormData({ name: '', email: '', comment: '', rating: 0 });
+
+        handleFlashMessage({
+          status: 'failure',
+          message:
+            'Error in submitting feedback, please check your connection and try again',
+        });
+      });
   };
 
   return (
-    <form className='feedback-form' onSubmit={handleFormSubmit}>
-      <label className='feedback-form__label' htmlFor='name'>
-        Name
-      </label>
-      <input
-        className='feedback-form__input'
-        id='name'
-        type='name'
-        name='name'
-        value={formData.name}
-        onChange={handleInputChange}
-        required
-      />
-      <label className='feedback-form__label' htmlFor='email'>
-        Email
-      </label>
-      <input
-        className='feedback-form__input'
-        name='email'
-        id='email'
-        type='email'
-        value={formData.email}
-        onChange={handleInputChange}
-        required
-      />
-      <label className='feedback-form__label'>Rating</label>
-      <StarRating
-        currentRating={formData.rating}
-        isInput={true}
-        handleInputChange={handleInputChange}
-      />
-      <label className='feedback-form__label' htmlFor='comment'>
-        Comment
-      </label>
-      <textarea
-        className='feedback-form__input'
-        rows={5}
-        name='comment'
-        id='comment'
-        value={formData.comment}
-        onChange={handleInputChange}
-        required
-      />
-      <button className='btn feedback-form__button' type='submit'>
-        Submit
-      </button>
-    </form>
+    <>
+      <form className='feedback-form' onSubmit={handleFormSubmit}>
+        <label className='feedback-form__label' htmlFor='name'>
+          Name
+        </label>
+        <input
+          className='feedback-form__input'
+          id='name'
+          type='name'
+          name='name'
+          value={formData.name}
+          onChange={handleInputChange}
+          required
+        />
+        <label className='feedback-form__label' htmlFor='email'>
+          Email
+        </label>
+        <input
+          className='feedback-form__input'
+          name='email'
+          id='email'
+          type='email'
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+        />
+        <label className='feedback-form__label'>Rating</label>
+        <StarRating
+          currentRating={formData.rating}
+          isInput={true}
+          handleInputChange={handleInputChange}
+        />
+        <label className='feedback-form__label' htmlFor='comment'>
+          Comment
+        </label>
+        <textarea
+          className='feedback-form__input'
+          rows={5}
+          name='comment'
+          id='comment'
+          value={formData.comment}
+          onChange={handleInputChange}
+          required
+        />
+        <button className='btn feedback-form__button' type='submit'>
+          Submit
+        </button>
+      </form>
+    </>
   );
 };
 

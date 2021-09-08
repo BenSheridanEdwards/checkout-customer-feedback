@@ -13,8 +13,13 @@
   padding: 60px;
 }
 
-.customer-review__header,
-.customer-review__sub-header {
+.customer-review__header {
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.customer-review__header-text,
+.customer-review__sub-header-text {
   color: #426696;
   text-align: center;
 
@@ -24,14 +29,13 @@
   }
 }
 
-.customer-review__sub-header {
+.customer-review__sub-header-text {
   margin-top: 12px;
 }
 
 .customer-review__container {
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
   width: 100%;
 
   @include large-screens-up {
