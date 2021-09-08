@@ -75,7 +75,7 @@ const FeedbackForm = (props: Props) => {
     <>
       <form className='feedback-form' onSubmit={handleFormSubmit}>
         <label className='feedback-form__label' htmlFor='name'>
-          Name
+          Name <span>*</span>
         </label>
         <input
           className='feedback-form__input'
@@ -87,7 +87,7 @@ const FeedbackForm = (props: Props) => {
           required
         />
         <label className='feedback-form__label' htmlFor='email'>
-          Email
+          Email <span>*</span>
         </label>
         <input
           className='feedback-form__input'
@@ -105,7 +105,7 @@ const FeedbackForm = (props: Props) => {
           handleInputChange={handleInputChange}
         />
         <label className='feedback-form__label' htmlFor='comment'>
-          Comment
+          Comment <span>*</span>
         </label>
         <textarea
           className='feedback-form__input'
