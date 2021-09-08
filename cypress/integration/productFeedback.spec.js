@@ -1,3 +1,5 @@
+import cy from "cypress";
+
 describe("ProductFeedback", () => {
   it("should to fill in the form and submit", () => {
     cy.visit("/");
