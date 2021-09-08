@@ -1,10 +1,10 @@
 import React from 'react';
-import CustomerReview from './components/CustomerReview/CustomerReview';
+import ProductReview from './components/ProductReview/ProductReview';
 
 function App() {
   return (
     <main className='content'>
-      <CustomerReview />
+      <ProductReview />
     </main>
   );
 }
